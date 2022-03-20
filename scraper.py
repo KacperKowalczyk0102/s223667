@@ -1,3 +1,6 @@
+import  requests
+from bs4 import BeautifulSoup
+
 # s223667
 
 ## Analiza struktury opinni w serwisie [Ceneo.pl]
@@ -17,3 +20,11 @@
 |lista zalet|div.review-feature_tittle--positives ~ review feature_item |Positives|
 |lista wad|div.review-feature_tittle--negatives ~ review feature_item |cons|
 ||||
+
+url = "https://www.ceneo.pl/95365253;pla?se=YxWbm1iqQxdyrhZALD2q02WnsAqEsNg5&shop=146599625&gclid=EAIaIQobChMIz5SOvanU9gIVM0aRBR1U1Qi3EAQYASABEgI1O_D_BwE"
+response = requests.get(url)
+
+page_dom = BeautifulSoup(response.text, 'html.parser')
+
+print(page_dom.prettify())
+#pretiffy robi nam wcięcia
